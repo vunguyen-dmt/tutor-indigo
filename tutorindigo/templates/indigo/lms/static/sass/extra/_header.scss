@@ -235,3 +235,9 @@ body.indigo-dark-theme {
         }
     }
 }
+
+@media (min-width: 992px) {
+    .settings-language-form {
+        margin-top: 64px!important;
+    }
+}
