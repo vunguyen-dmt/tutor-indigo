@@ -28,13 +28,13 @@ config: t.Dict[str, t.Dict[str, t.Any]] = {
         # To remove all links, run:
         # tutor config save --set INDIGO_FOOTER_NAV_LINKS=[]
         "FOOTER_NAV_LINKS": [
-            {"title": "About Us", "url": "/about"},
-            {"title": "Blog", "url": "/blog"},
-            {"title": "Donate", "url": "/donate"},
-            {"title": "Terms of Service", "url": "/tos"},
-            {"title": "Privacy Policy", "url": "/privacy"},
-            {"title": "Help", "url": "/help"},
-            {"title": "Contact Us", "url": "/contact"},
+            # {"title": "About Us", "url": "/about"},
+            # {"title": "Blog", "url": "/blog"},
+            # {"title": "Donate", "url": "/donate"},
+            # {"title": "Terms of Service", "url": "/tos"},
+            # {"title": "Privacy Policy", "url": "/privacy"},
+            # {"title": "Help", "url": "/help"},
+            # {"title": "Contact Us", "url": "/contact"},
         ],
     },
     "unique": {},
@@ -106,11 +106,11 @@ hooks.Filters.CONFIG_OVERRIDES.add_items(list(config["overrides"].items()))
 
 #  MFEs that are styled using Indigo
 indigo_styled_mfes = [
-    "learning",
-    "learner-dashboard",
-    "profile",
-    "account",
-    "discussions",
+    # "learning",
+    # "learner-dashboard",
+    # "profile",
+    # "account",
+    # "discussions",
 ]
 
 hooks.Filters.ENV_PATCHES.add_items(
@@ -130,51 +130,51 @@ RUN npm install '@edx/brand@npm:@edly-io/indigo-brand-openedx@^2.2.2'
 )
 
 
-hooks.Filters.ENV_PATCHES.add_item(
-    (
-        "mfe-dockerfile-post-npm-install-authn",
-        "RUN npm install '@edx/brand@npm:@edly-io/indigo-brand-openedx@^2.2.2'",
-    )
-)
+# hooks.Filters.ENV_PATCHES.add_item(
+#     (
+#         "mfe-dockerfile-post-npm-install-authn",
+#         "RUN npm install '@edx/brand@npm:@edly-io/indigo-brand-openedx@^2.2.2'",
+#     )
+# )
 
 # Include js file in lms main.html, main_django.html, and certificate.html
 
-hooks.Filters.ENV_PATCHES.add_items(
-    [
-        # for production
-        (
-            "openedx-common-assets-settings",
-            """
-javascript_files = ['base_application', 'application', 'certificates_wv']
-dark_theme_filepath = ['indigo/js/dark-theme.js']
+# hooks.Filters.ENV_PATCHES.add_items(
+#     [
+#         # for production
+#         (
+#             "openedx-common-assets-settings",
+#             """
+# javascript_files = ['base_application', 'application', 'certificates_wv']
+# dark_theme_filepath = ['indigo/js/dark-theme.js']
 
-for filename in javascript_files:
-    if filename in PIPELINE['JAVASCRIPT']:
-        PIPELINE['JAVASCRIPT'][filename]['source_filenames'] += dark_theme_filepath
-""",
-        ),
-        # for development
-        (
-            "openedx-lms-development-settings",
-            """
-javascript_files = ['base_application', 'application', 'certificates_wv']
-dark_theme_filepath = ['indigo/js/dark-theme.js']
+# for filename in javascript_files:
+#     if filename in PIPELINE['JAVASCRIPT']:
+#         PIPELINE['JAVASCRIPT'][filename]['source_filenames'] += dark_theme_filepath
+# """,
+#         ),
+#         # for development
+#         (
+#             "openedx-lms-development-settings",
+#             """
+# javascript_files = ['base_application', 'application', 'certificates_wv']
+# dark_theme_filepath = ['indigo/js/dark-theme.js']
 
-for filename in javascript_files:
-    if filename in PIPELINE['JAVASCRIPT']:
-        PIPELINE['JAVASCRIPT'][filename]['source_filenames'] += dark_theme_filepath
+# for filename in javascript_files:
+#     if filename in PIPELINE['JAVASCRIPT']:
+#         PIPELINE['JAVASCRIPT'][filename]['source_filenames'] += dark_theme_filepath
 
-MFE_CONFIG['INDIGO_ENABLE_DARK_TOGGLE'] = {{ INDIGO_ENABLE_DARK_TOGGLE }}
-""",
-        ),
-        (
-            "openedx-lms-production-settings",
-            """
-MFE_CONFIG['INDIGO_ENABLE_DARK_TOGGLE'] = {{ INDIGO_ENABLE_DARK_TOGGLE }}
-""",
-        ),
-    ]
-)
+# MFE_CONFIG['INDIGO_ENABLE_DARK_TOGGLE'] = {{ INDIGO_ENABLE_DARK_TOGGLE }}
+# """,
+#         ),
+#         (
+#             "openedx-lms-production-settings",
+#             """
+# MFE_CONFIG['INDIGO_ENABLE_DARK_TOGGLE'] = {{ INDIGO_ENABLE_DARK_TOGGLE }}
+# """,
+#         ),
+#     ]
+# )
 
 
 # Apply patches from tutor-indigo
