@@ -19,6 +19,36 @@ instructions, because git commits are used to generate release notes:
 
 <!-- scriv-insert-here -->
 
+<a id='changelog-19.0.0'></a>
+## v19.0.0 (2024-12-11)
+
+- 💥[Feature] Upgrade to Sumac (by @hinakhadim)
+
+<a id='changelog-18.3.0'></a>
+## v18.3.0 (2024-12-11)
+
+- 💥 [Deprecation] Drop support for python 3.8 and set Python 3.9 as the minimum supported python version. (by @hinakhadim)
+- 💥[Improvement] Rename Tutor's two branches (by @DawoudSheraz):
+  * Rename **master** to **release**, as this branch runs the latest official Open edX release tag.
+  * Rename **nightly** to **main**, as this branch runs the Open edX master branches, which are the basis for the next Open edX release.
+- [Bugfix] Fix dropdown select rendering issue on light theme (by @dawoudsheraz)
+    - ".wrapper-problem-response" did not need any dark theme variables outside dark-theme class for dropdown problems. This was causing the dropdown to use dark theme variables regardless of the theme that user selected.
+- [Bugfix] Add dark-theme for Course Handouts and Course Updates that appears on Learning MFE Course Outline Page (by @hinakhadim)
+- [Bugfix] Update dark-theme styles for ORA (Open Response Assessment) so that it becomes readable, usable, beautiful, and appealing (by @hinakhadim)
+    - The readability of styles in the `scss` file is challenging and will be improved in subsequent releases.
+- [Bugfix] Fix various dark theme issues with Teams tab on LMS. (by @dawoudsheraz)
+- [Bugfix] Update dark-theme styles for Notes and Textbook Page (by @hinakhadim)
+
+<a id='changelog-18.2.2'></a>
+## v18.2.2 (2024-10-29)
+
+- [Feature] Upgrade upstream apps to open-release/redwood.3. In particular, this will resolve serious issues with [course creation](https://github.com/openedx/frontend-app-authoring/issues/1199) and [language switching](https://github.com/openedx/frontend-app-account/issues/1052). (by @regisb)
+
+<a id='changelog-18.2.1'></a>
+## v18.2.1 (2024-10-11)
+
+- [Feature] Introduced theme toggle feature with enable/disable option and runtime switch between light and dark modes. (by @hinakhadim)
+
 <a id='changelog-18.1.1'></a>
 ## v18.1.1 (2024-08-27)
 
